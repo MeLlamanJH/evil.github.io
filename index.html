@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Cuenta atrás</title>
+    <style>
+        @font-face {
+        font-family: calculator;
+        src: url(./fonts/Calculator.ttf);
+    }
+    body {
+        background: black;
+        font-family: calculator;
+        text-align: center;
+        margin-top: 50px;
+        height: 910px;
+    }
+    h1 {
+        font-size: 40px;
+        margin-bottom: 20px;
+    }
+    #countdown {
+        font-size: 300px;
+        color: white;
+        display: inline-block;
+        margin: 20px;
+    }
+    .unit {
+        font-size: 100px;
+        color: white;
+        display: inline-block;
+        margin: 0 10px;
+        text-transform: uppercase;
+    }
+
+    #message {
+        font-size: 100px;
+        color: white;
+        margin-top: 20px;
+    }
+    </style>
+  </head>
+
+  <body>
+    <h1>Cuenta atrás para la apertura</h1>
+    <div id="countdown">
+      <span id="hours" class="unit"></span>
+      <span id="minutes" class="unit"></span>
+      <span id="seconds" class="unit"></span>
+    </div>
+    <div id="message"></div>
+
+    <script>
+      function countdown() {
+        const now = new Date();
+        const eventDate = new Date();
+        eventDate.setHours(19, 0, 0, 0); // set event time to 19:00
+
+        const currentTime = now.getTime();
+        const eventTime = eventDate.getTime();
+
+        const remainingTime = eventTime - currentTime;
+
+        if (remainingTime <= 0) {
+          document.getElementById("countdown").innerHTML = "00:00:00";
+          document.getElementById("message").innerHTML = "¡Ya es las 19:00!";
+        } else {
+          const hours = Math.floor(remainingTime / (1000 * 60 * 60));
+          const minutes = Math.floor(
+            (remainingTime % (1000 * 60 * 60)) / (1000 * 60)
+          );
+          const seconds = Math.floor(
+            (remainingTime % (1000 * 60)) / 1000
+          );
+
+          document.getElementById("hours").innerHTML = hours.toString().padStart(2, '0');
+          document.getElementById("minutes").innerHTML = minutes.toString().padStart(2, '0');
+          document.getElementById("seconds").innerHTML = seconds.toString().padStart(2, '0');
+        }
+      }
+
+      setInterval(countdown, 1000);
+    </script>
+  </body>
+</html>

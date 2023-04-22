@@ -1,0 +1,30 @@
+.countdown {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    height: 100vh;
+    flex-direction: row;
+  }
+  
+  .countdown__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0 2rem;
+    color: #fff;
+  }
+  
+  .countdown__item div {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    margin-top: 1rem;
+  }
+  
+  .countdown__item span {
+    background-color: #111;
+    padding: 1rem;
+  }
+  
